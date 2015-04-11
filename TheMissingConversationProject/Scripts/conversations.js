@@ -16,3 +16,17 @@
         }
     });
 }
+
+function testGetConversations() {
+
+    $.ajax({
+        type: 'POST',
+        url: '/Home/GetConversations',
+        async: false,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            output = result.conv;
+        }
+    });
+}

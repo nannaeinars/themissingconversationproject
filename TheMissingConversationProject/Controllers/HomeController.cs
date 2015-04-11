@@ -16,8 +16,6 @@ namespace TheMissingConversationProject.Controllers
 
         public ActionResult History()
         {
-            ViewBag.Message = "Your contact page.";
-
             List<Conversation> conversations = ConversationRepository.GetConversations();
 
             return View(conversations);
@@ -40,6 +38,20 @@ namespace TheMissingConversationProject.Controllers
             catch (Exception ex)
             {
                 return Json(new { status = "error", message = "Error occured adding conversation." });
+            }
+        }
+
+        public ActionResult GetConversations()
+        {
+            try
+            {
+                List<Conversation> conversations = ConversationRepository.GetConversations();
+
+                return Json(new { status = "ok", conv = conversations });
+            }
+            catch (Exception)
+            {
+                return Json(new { status = "error", message = "Something went wrong getting the conversations." });
             }
         }
     }
