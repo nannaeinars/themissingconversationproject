@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TheMissingConversationProject.Models.Conversation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstPerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondPerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstPerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondPerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAdded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ConversationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ConversationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ConversationId })
+        </td>
+    </tr>
+}
+
+</table>
